@@ -96,14 +96,13 @@ return {
     },
   },
   keys = {
-    { "n", "<leader>S", '<cmd>lua require("spectre").open()<CR>' },
+    { "<leader>S", '<cmd>lua require("spectre").open()<CR>' },
     {
-      "n",
       "<leader>sw",
       '<cmd>lua require("spectre").open_visual({select_word=true})<CR>',
       desc = "Search current word",
     },
-    { "v", "<leader>sw", '<esc><cmd>lua require("spectre").open_visual()<CR>' },
-    { "n", "<leader>sp", '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>' },
+    { "<leader>sw", '<esc><cmd>lua require("spectre").open_visual()<CR>' },
+    { "<leader>sp", '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>' },
   },
 }

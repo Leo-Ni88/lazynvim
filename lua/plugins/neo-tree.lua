@@ -11,4 +11,12 @@ return {
       follow_current_file = true,
     },
   },
+  keys = {
+    { "<leader>ee", "<CMD>Neotree toggle<CR>" },
+    { "<leader>eo", "<CMD>Neotree focus<CR>" },
+    { "<leader>es", "<CMD>Neotree show<CR>" },
+    { "<leader>ef", "<CMD>Neotree float<CR>" },
+    { "<leader>el", "<CMD>Neotree left<CR>" },
+    { "<leader>er", "<CMD>Neotree right<CR>" },
+  },
 }
