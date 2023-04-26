@@ -13,6 +13,9 @@ local function map(mode, lhs, rhs, opts)
   end
 end
 
+-- Exit insert mode
+map("i", "jk", "<ESC>", { desc = "Exit insert mode" })
+
 -- Resize window using <ctrl> arrow keys
 map("n", "<S-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
 map("n", "<S-Down>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
@@ -25,12 +28,13 @@ map("n", "<S-TAB>", "<CMD>bprevious<CR>", { desc = "Prev buffer" })
 map("n", "<leader>bd", "<CMD>bdelete<CR>", { desc = "Delete buffer" })
 
 -- quit
-map("n", "<leader>qa", "<cmd>qa<cr>", { desc = "Quit all" })
-map("n", "<leader>qq", "<CMD>q<CR>", { desc = "Quit current buffer" })
+map("n", "<leader>q", "<CMD>q<CR>", { desc = "Quit current buffer" })
+map("n", "<leader>Q", "<cmd>qa!<cr>", { desc = "Quit all files" })
 
 -- save file
-map({ "i", "v", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
-map({ "i", "v", "n", "s" }, "<C-s>a", "<cmd>wa<cr><esc>", { desc = "Save all file" })
+map({ "i", "v", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save current file" })
+map("n", "<leader>w", "<cmd>w<cr><esc>", { desc = "Save current file" })
+map("n", "<leader>W", "<cmd>wa<cr><esc>", { desc = "Save all files" })
 
 -- Save and Quit
 map("n", "<leader>wq", "<CMD>wq<CR>", { desc = "Save and quit" })

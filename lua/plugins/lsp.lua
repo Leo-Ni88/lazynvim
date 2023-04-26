@@ -1,4 +1,65 @@
 return {
+  -- add more treesitter parsers
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      context_commentstring = {
+        enable = true,
+        enable_autocmd = false,
+      },
+      ensure_installed = {
+        "c",
+        "bash",
+        "html",
+        "javascript",
+        "json",
+        "lua",
+        "markdown",
+        "markdown_inline",
+        "python",
+        "query",
+        "regex",
+        "tsx",
+        "typescript",
+        "vim",
+        "yaml",
+      },
+      rainbow = {
+        enable = true,
+        disable = { "html" },
+        extended_mode = false,
+        max_file_lines = nil,
+      },
+      autotag = { enable = true },
+      incremental_selection = { enable = true },
+      indent = { enable = true },
+    },
+  },
+
+  -- lspconfig
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      autoformat = false,
+    },
+  },
+
+  -- mason-lspconfig
+  {
+    "williamboman/mason-lspconfig.nvim",
+    lazy = true,
+    opts = {
+      ensure_installed = {
+        "clangd",
+        "pyright",
+        "lua_ls",
+        "stylua",
+        "shellcheck",
+        "shfmt",
+      },
+    },
+  },
+
   -- Lspsaga
   {
     "glepnir/lspsaga.nvim",
@@ -31,10 +92,10 @@ return {
     },
     keys = {
       { "gf", "<cmd>Lspsaga lsp_finder<CR>", { desc = "Find the symbol's definition" } },
-      { "pd", "<cmd>Lspsaga peek_definition<CR>", { desc = "Peek definition" } },
+      { "gD", "<cmd>Lspsaga peek_definition<CR>", { desc = "Peek definition" } },
       { "gd", "<cmd>Lspsaga goto_definition<CR>", { desc = "Go to definition" } },
-      { "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" } },
-      { "pt", "<cmd>Lspsaga peek_type_definition<CR>", { desc = "Peek type definition" } },
+      { "Gd", vim.lsp.buf.declaration, { desc = "Go to declaration" } },
+      { "gT", "<cmd>Lspsaga peek_type_definition<CR>", { desc = "Peek type definition" } },
       { "gt", "<cmd>Lspsaga goto_type_definition<CR>", { desc = "Go to type definition" } },
       { "go", "<cmd>Lspsaga outline<CR>", { desc = "Toggle outline" } },
       { "<leader>ca", "<cmd>Lspsaga code_action<CR>", { desc = "Code action" } },

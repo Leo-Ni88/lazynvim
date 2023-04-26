@@ -1,6 +1,22 @@
 return {
   -- numToStr/Comment.nvim
-  { "numToStr/Comment.nvim" },
+  {
+    "numToStr/Comment.nvim",
+    config = function()
+      require("Comment").setup()
+    end,
+    opts = {
+      ignore = "^$",
+      toggler = {
+        line = "<leader>cc",
+        block = "<leader>bc",
+      },
+      opleader = {
+        line = "<leader>c",
+        block = "<leader>b",
+      },
+    },
+  },
 
   -- myword
   {
@@ -25,5 +41,16 @@ return {
     opts = {
       disable_filetype = { "TelescopePrompt", "vim" },
     },
+  },
+
+  {
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    config = function()
+      require("nvim-surround").setup({
+        -- Configuration here, or leave empty to use defaults
+      })
+    end,
   },
 }

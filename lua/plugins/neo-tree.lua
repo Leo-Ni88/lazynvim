@@ -18,5 +18,6 @@ return {
     { "<leader>ef", "<CMD>Neotree float<CR>" },
     { "<leader>el", "<CMD>Neotree left<CR>" },
     { "<leader>er", "<CMD>Neotree right<CR>" },
+    { "<leader>e", "<CMD>Neotree toggle<CR>", desc = "Explorer NeoTree (root dir)", remap = true },
   },
 }
