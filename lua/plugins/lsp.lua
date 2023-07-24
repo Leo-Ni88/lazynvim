@@ -62,7 +62,7 @@ return {
 
   -- Lspsaga
   {
-    "glepnir/lspsaga.nvim",
+    "nvimdev/lspsaga.nvim",
     lazy = false,
     branch = "main",
     dependencies = {
@@ -75,23 +75,22 @@ return {
       },
       outline = {
         keys = {
-          expand_or_jump = "<CR>",
+          jump = "<CR>",
         },
       },
       callhierarchy = {
         keys = {
-          expand_collapse = "<CR>",
+          edit = "<CR>",
         },
       },
       finder = {
         keys = {
-          jump_to = "o",
-          expand_or_jump = "<CR>",
+          toggle_or_open = "<CR>",
         },
       },
     },
     keys = {
-      { "gf", "<cmd>Lspsaga lsp_finder<CR>", { desc = "Find the symbol's definition" } },
+      { "gf", "<cmd>Lspsaga finder<CR>", { desc = "Find the symbol's definition" } },
       { "gD", "<cmd>Lspsaga peek_definition<CR>", { desc = "Peek definition" } },
       { "gd", "<cmd>Lspsaga goto_definition<CR>", { desc = "Go to definition" } },
       { "Gd", vim.lsp.buf.declaration, { desc = "Go to declaration" } },
