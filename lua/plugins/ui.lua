@@ -1,12 +1,32 @@
 return {
   -- Colorschema
-  { "rebelot/kanagawa.nvim", lazy = true },
+  { "folke/tokyonight.nvim", lazy = false, priority = 1000, opts = { transparent = false }, enabled = true },
+  {
+    "catppuccin/nvim",
+    lazy = false,
+    name = "catppuccin",
+    priority = 1000,
+    opts = { commentStyle = { italic = true } },
+    enabled = true,
+  },
+  { "rebelot/kanagawa.nvim", lazy = false, priority = 1000, enabled = true },
+  { "EdenEast/nightfox.nvim", lazy = false, priority = 1000, enabled = true },
+  { "projekt0n/github-nvim-theme", lazy = false, priority = 1000, enabled = true },
+  { "rose-pine/neovim", lazy = false, name = "rose-pine", priority = 1000, enabled = true },
+  { "sainnhe/sonokai", lazy = false, priority = 1000, enabled = true },
 
   -- Configure LazyVim to load gruvbox
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "kanagawa",
+      -- colorscheme = "tokyonight",
+      -- colorscheme = "catppuccin-latte",
+      -- colorscheme = "kanagawa",
+      -- colorscheme = "habamax",
+      colorscheme = "sonokai",
+      -- colorscheme = "nightfox",
+      -- colorscheme = "github_dark",
+      -- colorscheme = "rose-pine",
     },
   },
 
@@ -77,6 +97,21 @@ return {
         "DiagnosticSignInfo",
         "DiagnosticSignHint",
         "DiagnosticSignOk",
+
+        -- NeoTree
+        "NeoTreeExpander",
+        "NeoTreeNormal",
+        "NeoTreeNormalNC",
+        "NeoTreeSignColumn",
+        "NeoTreeStatusLine",
+        "NeoTreeStatusLineNC",
+        "NeoTreeVertSplit",
+        "NeoTreeWinSeparator",
+        "NeoTreeEndOfBuffer",
+        "NeoTreeRootName",
+        "NeoTreeSymbolicLinkTarget",
+        "NeoTreeTitleBar",
+        "NeoTreeWindowsHidden",
       },
       exclude_groups = {},
     },
@@ -114,6 +149,15 @@ return {
     },
   },
 
+  -- lualine
+  {
+    "nvim-lualine/lualine.nvim",
+    event = "VeryLazy",
+    opts = {
+      theme = "sonokai",
+    },
+  },
+
   -- Noice: replaces the UI for messages, cmdline and the popupmenu
   {
     "folke/noice.nvim",
@@ -127,6 +171,14 @@ return {
           search_down = { kind = "search", pattern = "^%?", icon = " ", lang = "regex" },
         },
       },
+    },
+  },
+
+  -- nvim-notify
+  {
+    "rcarriga/nvim-notify",
+    opts = {
+      background_colour = "#000000",
     },
   },
 }
