@@ -9,7 +9,21 @@ return {
     opts = { commentStyle = { italic = true } },
     enabled = true,
   },
-  { "rebelot/kanagawa.nvim", lazy = false, priority = 1000, enabled = true },
+  {
+    "rebelot/kanagawa.nvim",
+    lazy = false,
+    priority = 1000,
+    enabled = true,
+    opts = {
+      overrides = function(colors)
+        return {
+          ["@lsp.type.comment"] = {
+            link = "Comment",
+          },
+        }
+      end,
+    },
+  },
   { "EdenEast/nightfox.nvim", lazy = false, priority = 1000, enabled = true },
   { "projekt0n/github-nvim-theme", lazy = false, priority = 1000, enabled = true },
   { "rose-pine/neovim", lazy = false, name = "rose-pine", priority = 1000, enabled = true },
