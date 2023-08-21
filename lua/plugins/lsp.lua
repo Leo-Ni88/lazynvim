@@ -74,6 +74,9 @@ return {
         enable = false,
       },
       outline = {
+        detail = false,
+        close_after_jump = true,
+        layout = "float",
         keys = {
           jump = "<CR>",
         },
