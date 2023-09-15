@@ -1,39 +1,79 @@
 local Util = require("lazyvim.util")
 
 return {
-  "nvim-telescope/telescope.nvim",
-  opts = {
-    defaults = {
-      mappings = {
-        i = {
-          ["<C-j>"] = require("telescope.actions").move_selection_next,
-          ["<C-k>"] = require("telescope.actions").move_selection_previous,
+  {
+    "nvim-telescope/telescope.nvim",
+    dependencies = {
+      "nvim-telescope/telescope-fzf-native.nvim",
+      build = "make",
+      config = function()
+        require("telescope").load_extension("fzf")
+      end,
+    },
+    opts = {
+      defaults = {
+        mappings = {
+          i = {
+            ["<C-j>"] = require("telescope.actions").move_selection_next,
+            ["<C-k>"] = require("telescope.actions").move_selection_previous,
+          },
+        },
+        layout_strategy = "horizontal", -- center/horizontal ..
+        layout_config = {
+          height = 0.90,
+          width = 0.90,
+          mirror = false,
+          prompt_position = "bottom",
         },
       },
-      layout_strategy = "horizontal", -- center/horizontal ..
-      layout_config = {
-        height = 0.90,
-        width = 0.90,
-        mirror = false,
-        prompt_position = "bottom",
+      pickers = {
+        find_files = {
+          -- find_command = { "fd", "-I", "-s" },
+          hidden = true,
+          no_ignore = true,
+        },
+        live_grep = {
+          additional_args = {
+            "--max-columns=150",
+            "--max-columns-preview",
+            "--no-ignore",
+            "--glob=!.git/*",
+            "--colors=line:none",
+            "--colors=line:style:bold",
+            "--smart-case",
+          },
+        },
+        grep_string = {
+          additional_args = {
+            "--max-columns=150",
+            "--max-columns-preview",
+            "--no-ignore",
+            "--glob=!.git/*",
+            "--colors=line:none",
+            "--colors=line:style:bold",
+            "--smart-case",
+          },
+          use_regex = true,
+        },
       },
     },
+    keys = {
+      { "<leader>/", "<cmd>Telescope live_grep<cr>", desc = "Live grep (root dir)" },
+      { "<leader><space>", "<cmd>Telescope find_files<cr>", desc = "Find Files (root dir)" },
+    },
   },
-  keys = {
-    { "<leader>,", "<cmd>Telescope buffers show_all_buffers=true<cr>", desc = "Switch Buffer" },
-    { "<leader>/", "<cmd>Telescope live_grep<cr>", desc = "Live grep" },
-    { "<leader>:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
-    { "<leader><space>", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
-    -- find
-    { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
-    { "<leader>fF", Util.telescope("files"), desc = "Find Files (root dir)" },
-    { "<leader>ff", Util.telescope("files", { cwd = false }), desc = "Find Files (cwd)" },
-    { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
-    { "<leader>fR", Util.telescope("oldfiles", { cwd = vim.loop.cwd() }), desc = "Recent (cwd)" },
-    { "<leader>sg", Util.telescope("live_grep"), desc = "Grep (root dir)" },
-    { "<leader>sG", Util.telescope("live_grep", { cwd = false }), desc = "Grep (cwd)" },
-    { "<leader>sw", Util.telescope("grep_string"), desc = "Word (root dir)" },
-    { "<leader>sW", Util.telescope("grep_string", { cwd = false }), desc = "Word (cwd)" },
-    { "<leader>uC", Util.telescope("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
+  {
+    "nvim-telescope/telescope-fzf-native.nvim",
+    build = "make",
+    opts = {
+      extensions = {
+        fzf = {
+          fuzzy = true, -- false will only do exact matching
+          override_generic_sorter = true, -- override the generic sorter
+          override_file_sorter = true, -- override the file sorter
+          case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+        },
+      },
+    },
   },
 }
