@@ -16,6 +16,12 @@ return {
           i = {
             ["<C-j>"] = require("telescope.actions").move_selection_next,
             ["<C-k>"] = require("telescope.actions").move_selection_previous,
+            ["<C-h>"] = require("telescope.actions").results_scrolling_left,
+            ["<C-l>"] = require("telescope.actions").results_scrolling_right,
+            ["<M-j>"] = require("telescope.actions").preview_scrolling_down,
+            ["<M-k>"] = require("telescope.actions").preview_scrolling_up,
+            ["<M-h>"] = require("telescope.actions").preview_scrolling_left,
+            ["<M-l>"] = require("telescope.actions").preview_scrolling_right,
           },
         },
         layout_strategy = "horizontal", -- center/horizontal ..
@@ -24,6 +30,7 @@ return {
           width = 0.90,
           mirror = false,
           prompt_position = "bottom",
+          preview_width = 0.45,
         },
       },
       pickers = {

@@ -19,3 +19,5 @@ opt.shiftwidth = 4
 -- opt.title = true
 -- opt.ttimeoutlen = 0
 -- opt.autoread = true
+
+vim.g.autoformat = false

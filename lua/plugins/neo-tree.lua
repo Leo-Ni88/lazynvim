@@ -4,8 +4,14 @@ return {
     close_if_last_window = true,
     enable_git_status = false,
     enable_diagnostics = false,
+    filtered_items = {
+        visible = true,
+        hide_hidden = false,
+    },
     filesystem = {
-      follow_current_file = true,
+        follow_current_file = {
+            enabled = true,
+        },
     },
     buffers = {
       follow_current_file = true,

@@ -40,7 +40,7 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = {
-      autoformat = false,
+      -- autoformat = false,
     },
   },
 
