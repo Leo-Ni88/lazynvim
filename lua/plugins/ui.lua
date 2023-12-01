@@ -82,6 +82,94 @@ return {
         "OutlinePreviewNormal",
         "IndentBlanklineChar",
 
+        -- barbar.nvim
+        "Buffer",
+        "BufferOffset",
+        "BufferDefaultOffset",
+        "BufferDefaultInactiveIcon",
+        "BufferDefaultVisibleIcon",
+        "BufferTabpages",
+        "BufferTabpageFill",
+        "NvimTreeEndOfBuffer",
+        "BufferDefaultTabpageFill",
+        "BufferDefaultTabpagesSep",
+
+        "BufferAlternateAlternate",
+        "BufferAlternateCurrent",
+        "BufferAlternateInactive",
+        "BufferAlternateVisible",
+        "BufferAlternateADDED",
+        "BufferAlternateCHANGED",
+        "BufferAlternateDELETED",
+        "BufferAlternateERROR",
+        "BufferAlternateHINT",
+        "BufferAlternateIcon",
+        "BufferAlternateIndex",
+        "BufferAlternateINFO",
+        "BufferAlternateMod",
+        "BufferAlternateNumber",
+        "BufferAlternateSign",
+        "BufferAlternateSignRight",
+        "BufferAlternateTarget",
+        "BufferAlternateWARN",
+
+        "BufferCurrentAlternate",
+        "BufferCurrentCurrent",
+        "BufferCurrentInactive",
+        "BufferCurrentVisible",
+        "BufferCurrentADDED",
+        "BufferCurrentCHANGED",
+        "BufferCurrentDELETED",
+        "BufferCurrentERROR",
+        "BufferCurrentHINT",
+        "BufferCurrentIcon",
+        "BufferCurrentIndex",
+        "BufferCurrentINFO",
+        "BufferCurrentMod",
+        "BufferCurrentNumber",
+        "BufferCurrentSign",
+        "BufferCurrentSignRight",
+        "BufferCurrentTarget",
+        "BufferCurrentWARN",
+
+        "BufferInactiveAlternate",
+        "BufferInactiveCurrent",
+        "BufferInactiveInactive",
+        "BufferInactiveVisible",
+        "BufferInactiveADDED",
+        "BufferInactiveCHANGED",
+        "BufferInactiveDELETED",
+        "BufferInactiveERROR",
+        "BufferInactiveHINT",
+        "BufferInactiveIcon",
+        "BufferInactiveIndex",
+        "BufferInactiveINFO",
+        "BufferInactiveMod",
+        "BufferInactiveNumber",
+        "BufferInactiveSign",
+        "BufferInactiveSignRight",
+        "BufferInactiveTarget",
+        "BufferInactiveWARN",
+
+        "BufferVisibleAlternate",
+        "BufferVisibleCurrent",
+        "BufferVisibleInactive",
+        "BufferVisibleVisible",
+        "BufferVisibleADDED",
+        "BufferVisibleCHANGED",
+        "BufferVisibleDELETED",
+        "BufferVisibleERROR",
+        "BufferVisibleHINT",
+        "BufferVisibleIcon",
+        "BufferVisibleIndex",
+        "BufferVisibleINFO",
+        "BufferVisibleMod",
+        "BufferVisibleNumber",
+        "BufferVisibleSign",
+        "BufferVisibleSignRight",
+        "BufferVisibleTarget",
+        "BufferVisibleWARN",
+
         -- lspsaga group
         "SagaShadow",
         "SagaCollapse",
@@ -126,6 +214,9 @@ return {
         "NeoTreeSymbolicLinkTarget",
         "NeoTreeTitleBar",
         "NeoTreeWindowsHidden",
+
+        -- LSP
+        "LspFloatWinBorder",
       },
       exclude_groups = {},
     },
@@ -135,6 +226,7 @@ return {
   {
     "akinsho/bufferline.nvim",
     lazy = true,
+    enabled = true,
     version = "v3.*",
     dependencies = "nvim-tree/nvim-web-devicons",
     opts = {
@@ -159,8 +251,54 @@ return {
         persist_buffer_sort = false, -- whether or not custom sorted buffers should persist
         separator_style = "slant", -- "slant" | "thick" | "thin" | { 'any', 'any' }
         always_show_bufferline = true,
+        sort_by = "insert_after_current",
       },
     },
+  },
+
+  -- barbar.nvim
+  {
+    "romgrk/barbar.nvim",
+    enabled = false,
+    dependencies = {
+      "lewis6991/gitsigns.nvim", -- OPTIONAL: for git status
+      "nvim-tree/nvim-web-devicons", -- OPTIONAL: for file icons
+    },
+    init = function()
+      vim.g.barbar_auto_setup = false
+    end,
+    opts = {
+      -- auto_hide = 2,
+      focus_on_close = "previous",
+      icons = {
+        diagnostics = {
+          [vim.diagnostic.severity.ERROR] = { enabled = false, icon = "ﬀ" },
+          [vim.diagnostic.severity.WARN] = { enabled = false },
+          [vim.diagnostic.severity.INFO] = { enabled = false },
+          [vim.diagnostic.severity.HINT] = { enabled = false },
+        },
+        gitsigns = {
+          added = { enabled = false, icon = "+" },
+          changed = { enabled = false, icon = "~" },
+          deleted = { enabled = false, icon = "-" },
+        },
+        filetype = {
+          -- Sets the icon's highlight group.
+          -- If false, will use nvim-web-devicons colors
+          custom_colors = false,
+
+          -- Requires `nvim-web-devicons` if `true`
+          enabled = true,
+        },
+        separator = { left = "▎", right = "" },
+        separator_at_end = false,
+        sidebar_filetypes = {
+          ["neo-tree"] = { event = "BufWipeout" },
+        },
+        preset = "default",
+      },
+    },
+    version = "^1.0.0", -- optional: only update when a new 1.x version is released
   },
 
   -- lualine

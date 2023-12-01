@@ -42,5 +42,8 @@ map("n", "<leader>wq", "<CMD>wq<CR>", { desc = "Save and quit" })
 -- Search word under cursor
 map({ "n", "x" }, "sw", "*N", { desc = "Search word under cursor" })
 
+--
+map("n", "<leader>bs", "<CMD>BufferLinePick<CR>", { desc = "Buffer select" })
+
 -- clangformat
 map('', '<leader>mm', ':py3f /home/leo/workspace/github/clang/tools/clang-format/clang-format.py<CR>')
