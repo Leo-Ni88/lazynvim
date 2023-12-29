@@ -1,4 +1,4 @@
-if true then
+if false then
   return {}
 end
 
@@ -114,9 +114,19 @@ return {
   {
     "folke/flash.nvim",
     event = "VeryLazy",
+    enabled = true,
     opts = {
       search = {
-        mode = "exact",
+        mode = "fuzzy",
+      },
+      label = {
+        uppercase = false,
+      },
+      modes = {
+        search = {
+          enabled = true,
+          search = { mode = "exact" },
+        },
       },
     },
   },

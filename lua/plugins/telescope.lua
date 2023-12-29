@@ -49,6 +49,7 @@ return {
             "--colors=line:style:bold",
             "--smart-case",
           },
+          disable_coordinates = false,
         },
         grep_string = {
           additional_args = {
@@ -67,6 +68,10 @@ return {
     keys = {
       { "<leader>/", "<cmd>Telescope live_grep<cr>", desc = "Live grep (root dir)" },
       { "<leader><space>", "<cmd>Telescope find_files<cr>", desc = "Find Files (root dir)" },
+      { "<leader>sG", Util.telescope("live_grep"), desc = "Grep (root dir)" },
+      { "<leader>sg", Util.telescope("live_grep", { cwd = false }), desc = "Grep (cwd)" },
+      { "<leader>sW", Util.telescope("grep_string", { word_match = "-w" }), desc = "Word (root dir)" },
+      { "<leader>sw", Util.telescope("grep_string", { cwd = false, word_match = "-w" }), desc = "Word (cwd)" },
     },
   },
   {
