@@ -5,10 +5,10 @@ end
 return {
   {
     "nvim-pack/nvim-spectre",
-    enabled = true,
+    enabled = false,
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {
-      mapping = {
+      --[[ mapping = {
         ["toggle_line"] = {
           map = "dd",
           cmd = "<cmd>lua require('spectre').toggle_line()<CR>",
@@ -60,7 +60,7 @@ return {
           desc = "toggle search hidden",
         },
         -- you can put your mapping here it only use normal mode
-      },
+      }, ]]
       find_engine = {
         -- rg is map with finder_cmd
         ["rg"] = {
@@ -100,7 +100,7 @@ return {
         },
       },
     },
-    keys = {
+    --[[ keys = {
       { "<leader>g", '<cmd>lua require("spectre").open()<CR>' },
       {
         "<leader>gw",
@@ -109,7 +109,7 @@ return {
       },
       { "<leader>gw", '<esc><cmd>lua require("spectre").open_visual()<CR>' },
       { "<leader>gp", '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>' },
-    },
+    }, ]]
   },
   {
     "folke/flash.nvim",

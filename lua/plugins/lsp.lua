@@ -17,6 +17,7 @@ return {
         "markdown",
         "markdown_inline",
         "python",
+        "go",
         "query",
         "regex",
         "tsx",
@@ -52,6 +53,7 @@ return {
       ensure_installed = {
         "clangd",
         "pyright",
+        "go",
         "lua_ls",
         "stylua",
         "shellcheck",
