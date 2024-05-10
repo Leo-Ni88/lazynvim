@@ -16,6 +16,17 @@ end
 -- Exit insert mode
 map("i", "jk", "<ESC>", { desc = "Exit insert mode" })
 
+-- Del keymaps with <ctrl> hjkl keys
+vim.keymap.del("n", "<C-h>", { desc = "Go to left window", remap = true })
+vim.keymap.del("n", "<C-j>", { desc = "Go to lower window", remap = true })
+vim.keymap.del("n", "<C-k>", { desc = "Go to upper window", remap = true })
+vim.keymap.del("n", "<C-l>", { desc = "Go to right window", remap = true })
+
+vim.keymap.del("t", "<C-h>", { desc = "Go to left window" })
+vim.keymap.del("t", "<C-j>", { desc = "Go to lower window" })
+vim.keymap.del("t", "<C-k>", { desc = "Go to upper window" })
+vim.keymap.del("t", "<C-l>", { desc = "Go to right window" })
+
 -- Resize window using <ctrl> arrow keys
 map("n", "<S-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
 map("n", "<S-Down>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
